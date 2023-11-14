@@ -1,2 +1,2 @@
 # Equipo-403
-##Este repositorio es del grupo 403
+Este repositorio es del equipo 403
