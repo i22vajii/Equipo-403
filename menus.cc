@@ -13,6 +13,9 @@ void menu_roles(){
     std ::cin>>rol;
     system("clear");
     switch(rol){
+        case 0:
+            std::cout<<"Saliendo del programa"<<std::endl;
+            break;
         case 1:
             menu_visitante();
             break;
@@ -44,6 +47,9 @@ void menu_visitante(){
     std:: cin>>opcvisit;
     system("clear");
     switch(opcvisit){
+        case 0:
+            std::cout<<"Saliendo del programa"<<std::endl;
+            break;
         case 1:
             //funcion
             break;
@@ -76,6 +82,9 @@ void menu_usuario(){
     std:: cin>>opcuser;
     system("clear");
     switch(opcuser){
+        case 0:
+            std::cout<<"Saliendo del programa"<<std::endl;
+            break;
         case 1:
             //funcion
             break;
@@ -108,6 +117,9 @@ void menu_organizador(){
     std:: cin>>opcorganizador;
     system("clear");
     switch(opcorganizador){
+        case 0:
+            std::cout<<"Saliendo del programa"<<std::endl;
+            break;
         case 1:
             //funcion
             break;
@@ -140,6 +152,9 @@ void menu_director(){
     std:: cin>>opcdirector;
     system("clear");
     switch(opcdirector){
+        case 0:
+            std::cout<<"Saliendo del programa"<<std::endl;
+            break;
         case 1:
             //funcion
             break;

@@ -3,7 +3,7 @@
     #include<string>
     #include<vector>
     #include<iostream>
-    
+
     class Actividad{
         private:
             std::string nombre_;
@@ -20,6 +20,12 @@
             float GetCoste(){return coste_;}
             int GetAforo(){return aforo_;}
             int GetAforoOcupado(){return aforo_ocupado_;}
+            void SetNombre(std::string nombre){nombre_=nombre;}
+            void SetDescripcion(std::string descripcion){descripcion_=descripcion;}
+            void SetFecha(std::string fecha){fecha_=fecha;}
+            void SetCoste(float coste){coste_=coste;}
+            void SetAforo(int aforo){aforo_=aforo;}
+            void SetNombre(std::string nombre){nombre_=nombre;}
 
     };
 

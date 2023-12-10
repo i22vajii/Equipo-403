@@ -20,10 +20,10 @@ void VerActividades(std::vector<Actividad> va){
     do{
         std::cin>>aux;
         //Comprueba que la actividad seleccionada es valida
-        if(aux<0 || aux>va.size()){
+        if(aux<0 || aux>=va.size()){
             std::cout<<"El numero introducido no es un numero valido, vuelva a introducirlo"<<std::endl;
         }
-    }while(aux<0 || aux>va.size());
+    }while(aux<0 || aux>=va.size());
     //Muestra toda la informacion de la actividad seleccionada
     std::cout<<"Nombre:"<<(va[aux].GetNombre())<<std::endl<<
     "Descripcion:"<<(va[aux].GetDescripcion())<<std::endl<<
