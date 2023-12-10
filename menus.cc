@@ -10,9 +10,9 @@ void menu_roles(){
     std::cout<<"3. Director"<<std:: endl;
     std::cout<<"4. Organizador"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
-    // poner limpiar pantalla
+    // poner limpiar pantalla ¿system("clear")?
     std ::cin>>rol;
-    switch(rol)
+    switch(rol){
         case 1:
             menu_visitante();
             break;
@@ -25,9 +25,10 @@ void menu_roles(){
         case 4:
             menu_director();
             break;
-        case : // or default ??
+        default :
             std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
             break;
+    }
     }while(rol!=0);
 }
 
@@ -42,7 +43,7 @@ void menu_visitante(){
     std::cout<<"0. Salir:"<<std:: endl;
     std:: cin>>opcvisit;
     // poner limpiar pantalla
-    switch(opcvisit)
+    switch(opcvisit){
         case 1:
             //funcion
             break;
@@ -55,9 +56,10 @@ void menu_visitante(){
         case 4:
             //funcion
             break;
-        case : // or default ??
+        default :
             std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
             break;
+    }
     }while(opcvisit!=0);
 
 }
@@ -73,7 +75,7 @@ void menu_usuario(){
     std::cout<<"0. Salir:"<<std:: endl;
     std:: cin>>opcuser;
     // poner limpiar pantalla
-    switch(opcuser)
+    switch(opcuser){
         case 1:
             //funcion
             break;
@@ -86,9 +88,10 @@ void menu_usuario(){
         case 4:
             //funcion
             break;
-        case : // or default ??
+        default:
             std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
             break;
+    }
     }while(opcuser!=0);
 
 }
@@ -104,7 +107,7 @@ void menu_organizador(){
     std::cout<<"0. Salir:"<<std:: endl;
     std:: cin>>opcorganizador;
     // poner limpiar pantalla
-    switch(opcorganizador)
+    switch(opcorganizador){
         case 1:
             //funcion
             break;
@@ -117,9 +120,10 @@ void menu_organizador(){
         case 4:
             //funcion
             break;
-        case : // or default ??
+        default:
             std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
             break;
+    }
     }while(opcorganizador!=0);
 
 }
@@ -135,7 +139,7 @@ void menu_director(){
     std::cout<<"0. Salir:"<<std:: endl;
     std:: cin>>opcdirector;
     // poner limpiar pantalla
-    switch(opcdirector)
+    switch(opcdirector){
         case 1:
             //funcion
             break;
@@ -148,9 +152,10 @@ void menu_director(){
         case 4:
             //funcion
             break;
-        case : // or default ??
+        default:
             std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
             break;
+    }
     }while(opcdirector!=0);
 
 }
