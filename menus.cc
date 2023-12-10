@@ -1,4 +1,5 @@
 #include"menus.h"
+#include<iostream>
 
 void menu_roles(){
     int rol=0;
@@ -10,8 +11,8 @@ void menu_roles(){
     std::cout<<"4. Organizador"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
     // poner limpiar pantalla
-    cin>>rol;
-    switch
+    std ::cin>>rol;
+    switch(rol)
         case 1:
             menu_visitante();
             break;
@@ -39,9 +40,9 @@ void menu_visitante(){
     std::cout<<"3. f3"<<std:: endl;
     std::cout<<"4. f4"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
-    cin>>opcvisit;
+    std:: cin>>opcvisit;
     // poner limpiar pantalla
-    switch
+    switch(opcvisit)
         case 1:
             //funcion
             break;
@@ -70,9 +71,9 @@ void menu_usuario(){
     std::cout<<"3. f3"<<std:: endl;
     std::cout<<"4. f4"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
-    cin>>opcuser;
+    std:: cin>>opcuser;
     // poner limpiar pantalla
-    switch
+    switch(opcuser)
         case 1:
             //funcion
             break;
@@ -101,9 +102,9 @@ void menu_organizador(){
     std::cout<<"3. f3"<<std:: endl;
     std::cout<<"4. f4"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
-    cin>>opcorganizador;
+    std:: cin>>opcorganizador;
     // poner limpiar pantalla
-    switch
+    switch(opcorganizador)
         case 1:
             //funcion
             break;
@@ -123,7 +124,7 @@ void menu_organizador(){
 
 }
 
-void menu_visitante(){
+void menu_director(){
     int opcdirector=0;
     do{
     std::cout<<"Elija una opcion"<<std:: endl;
@@ -132,9 +133,9 @@ void menu_visitante(){
     std::cout<<"3. f3"<<std:: endl;
     std::cout<<"4. f4"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
-    cin>>opcdirector;
+    std:: cin>>opcdirector;
     // poner limpiar pantalla
-    switch
+    switch(opcdirector)
         case 1:
             //funcion
             break;
