@@ -5,7 +5,7 @@ Usuario::Usuario(std::string nombrecompleto, int telefono, std::string correo){
     telefono_=telefono;
     correo_=correo;
 }
-
+/*
 void Usuario::VerActividades(std::vector<Actividad> va){
     int aux;
     std::cout<<"Seleccione la actividad de la que quiere ver toda la informacion:"<<std::endl;
@@ -29,7 +29,7 @@ void Usuario::VerActividades(std::vector<Actividad> va){
     "Aforo:"<<(va[aux].GetAforo())<<std::endl<<
     "Aforo Ocupado:"<<(va[aux].GetAforoOcupado())<<std::endl;
 }
-
+*/
 bool Usuario::PreinscribirUsuario(Actividad a){
     std::fstream fs;
     std::string nomusu;
