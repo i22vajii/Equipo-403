@@ -10,8 +10,8 @@ void menu_roles(){
     std::cout<<"3. Director"<<std:: endl;
     std::cout<<"4. Organizador"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
-    // poner limpiar pantalla ¿system("clear")?
     std ::cin>>rol;
+    system("clear");
     switch(rol){
         case 1:
             menu_visitante();
@@ -42,7 +42,7 @@ void menu_visitante(){
     std::cout<<"4. f4"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
     std:: cin>>opcvisit;
-    // poner limpiar pantalla
+    system("clear");
     switch(opcvisit){
         case 1:
             //funcion
@@ -74,7 +74,7 @@ void menu_usuario(){
     std::cout<<"4. f4"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
     std:: cin>>opcuser;
-    // poner limpiar pantalla
+    system("clear");
     switch(opcuser){
         case 1:
             //funcion
@@ -106,7 +106,7 @@ void menu_organizador(){
     std::cout<<"4. f4"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
     std:: cin>>opcorganizador;
-    // poner limpiar pantalla
+    system("clear");
     switch(opcorganizador){
         case 1:
             //funcion
@@ -138,7 +138,7 @@ void menu_director(){
     std::cout<<"4. f4"<<std:: endl;
     std::cout<<"0. Salir:"<<std:: endl;
     std:: cin>>opcdirector;
-    // poner limpiar pantalla
+    system("clear");
     switch(opcdirector){
         case 1:
             //funcion
