@@ -1,12 +1,12 @@
 #include "actividad.h"
 
-Actividad::Actividad(std::string nombre, std::string descripcion, std::string fecha, float coste, int aforo){
+Actividad::Actividad(std::string id,std::string nombre, std::string descripcion, std::string fecha, float coste, int aforo){
+    id_=id;
     nombre_=nombre;
     descripcion_=descripcion;
     fecha_=fecha;
     coste_=coste;
     aforo_=aforo;
-    aforo_ocupado_=0;
 }
 
 void VerActividades(std::vector<Actividad> va){
@@ -25,10 +25,10 @@ void VerActividades(std::vector<Actividad> va){
         }
     }while(aux<0 || aux>=va.size());
     //Muestra toda la informacion de la actividad seleccionada
-    std::cout<<"Nombre:"<<(va[aux].GetNombre())<<std::endl<<
+    std::cout<<"Id: "<<(va[aux].GetId())<<std::endl<<
+    "Nombre:"<<(va[aux].GetNombre())<<std::endl<<
     "Descripcion:"<<(va[aux].GetDescripcion())<<std::endl<<
     "Fecha:"<<(va[aux].GetFecha())<<std::endl<<
     "Coste:"<<(va[aux].GetCoste())<<std::endl<<
-    "Aforo:"<<(va[aux].GetAforo())<<std::endl<<
-    "Aforo Ocupado:"<<(va[aux].GetAforoOcupado())<<std::endl;
+    "Aforo:"<<(va[aux].GetAforo())<<std::endl;
 }
