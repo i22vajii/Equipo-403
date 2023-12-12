@@ -1,7 +1,31 @@
 #include<iostream>
+#include<fstream>
+#include"actividad.h"
 int main(){
+    std::fstream fs;
+    std::vector<Actividad> vectact;
        int rol=0;
        int opc=0;
+       std::string id;
+       std::string descricion;
+       std::string fecha;
+       std::string nombre;
+       std::string aux;
+       float coste;
+       int aforo;
+    std::ifstream archivo("Actividades.txt");
+    while(archivo.eof()==false){
+        getline(archivo,id);
+        getline(archivo,nombre);
+        getline(archivo,descricion);
+        getline(archivo,fecha);
+        getline(archivo,aux);
+        coste=stof(aux);
+        getline(archivo,aux);
+        aforo=stoi(aux);
+        Actividad aux(id,nombre,descricion,fecha,coste,aforo);
+        vectact.push_back(aux);
+    }
     do{//roles
     std::cout<<"Elija un rol:"<<std:: endl;
     std::cout<<"1. Visitante"<<std:: endl;
@@ -147,6 +171,16 @@ int main(){
             break;
     }
     }while(rol!=0);
+    fs.open("Actividades.txt",std::fstream::out);
+    for (int i=0;vectact.size()>i;i++){
+        fs<<(vectact[i].GetId())<<std::endl;
+        fs<<(vectact[i].GetNombre())<<std::endl;
+        fs<<(vectact[i].GetDescripcion())<<std::endl;
+        fs<<(vectact[i].GetFecha())<<std::endl;
+        fs<<(vectact[i].GetCoste())<<std::endl;
+        fs<<(vectact[i].GetAforo())<<std::endl;
+    }
+    fs.close();
 }
 
 void menu_visitante(){
