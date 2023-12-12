@@ -6,7 +6,7 @@
     class Organizador:public Director{
         private:
         public:
-            Actividad CrearActividad();
+            Actividad CrearActividad(std::vector<Actividad> va);
     };
 
 #endif

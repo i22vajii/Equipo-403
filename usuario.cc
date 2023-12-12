@@ -37,3 +37,32 @@ bool Usuario::PreinscribirUsuario(Actividad a){
     fs.close();
     return true;
 }
+
+bool Usuario::CancelarPreinscripcion(Actividad a){
+    std::vector<std::string> vusu;
+    std::string aux;
+    std::fstream fs;
+    bool borrar;
+    fs.open(a.GetId()+".txt", std::fstream::in);
+    while(fs.eof()==false){
+        fs>>aux;
+        if(aux!=correo_){
+            vusu.push_back(aux);
+        }
+        else{
+            borrar=true;
+            std::cout<<"Usuario borrado de la actividad"<<std::endl;
+        }
+    }
+    fs.close();
+    fs.open(a.GetId()+".txt", std::fstream::out);
+    for(int i=0; vusu.size()>i; i++){
+        fs<<vusu[i];
+    }
+    fs.close();
+    if(borrar!=true){
+        std::cout<<"El usuario no se ha encontrado en la actividad"<<std::endl;
+        return false;
+    }
+    return true;
+}

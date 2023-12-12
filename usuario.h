@@ -14,6 +14,7 @@
         public:
             Usuario(std::string nombrecompleto, int telefono, std::string correo);
             bool PreinscribirUsuario(Actividad a);
+            bool CancelarPreinscripcion(Actividad a);
     };
 
 #endif

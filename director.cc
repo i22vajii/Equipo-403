@@ -115,3 +115,20 @@ Actividad Director::ActualizarActividad(Actividad a){
     //Devolvemos la actividad modificada
     return a;
 }
+
+void Director::MostrarInscritos(Actividad a){
+    std::fstream fs;
+    std::string usu;
+    int cont=0;
+    fs.open(a.GetId()+".txt",std::fstream::in);
+    std::cout<<"Los usuarios inscritos son:"<<std::endl;
+    while(fs.eof()==false){
+        fs>>usu;
+        std::cout<<usu<<std::endl;
+        cont++;
+        if(cont==a.GetAforo()){
+            std::cout<<"Los usuarios en lista de espera son:"<<std::endl;
+        }
+    }
+    fs.close();
+}
