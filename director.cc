@@ -9,9 +9,9 @@ void Director::AprobarInscripcion(){
     //Copia toda la informacion del fichero Solicitudes.txt en los vectores vact y vusu
     fs.open("Solicitudes.txt",std::fstream::in);
     while(fs.eof()==false){
-        fs>>aux;
+        getline(fs,aux);
         vact.push_back(aux);
-        fs>>aux;
+        getline(fs,aux);
         vusu.push_back(aux);
     }
     fs.close();
@@ -123,7 +123,7 @@ void Director::MostrarInscritos(Actividad a){
     fs.open(a.GetId()+".txt",std::fstream::in);
     std::cout<<"Los usuarios inscritos son:"<<std::endl;
     while(fs.eof()==false){
-        fs>>usu;
+        getline(fs,usu);
         std::cout<<usu<<std::endl;
         cont++;
         if(cont==a.GetAforo()){
