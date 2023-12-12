@@ -4,7 +4,7 @@ Actividad Organizador::CrearActividad(){
     std::string id, nombre, descripcion, fecha;
     float coste;
     int aforo;
-    std::cout<<"Introduzca el id de la actividad"<<std::endl;
+    std::cout<<"Introduzca el id de la actividad, ten en cuenta que posteriormente no se podra modificar"<<std::endl;
     std::cin>>id;
     std::cout<<"Introduzca el nombre de la actividad"<<std::endl;
     std::cin>>nombre;
