@@ -18,7 +18,7 @@ void Director::AprobarInscripcion(){
     //Muestra por pantalla las solicitudes
     std::cout<<"Indica la solicitud que desea aprobar"<<std::endl;
     for(int i=0;vusu.size()>i;i++){
-        std::cout<<i<<". El usuario "<<vusu[i]<<" desea hacer una preinscripcion a la actividad "<<vact[i]<<std::endl;
+        std::cout<<i<<". El usuario "<<vusu[i]<<" desea hacer una preinscripcion a la actividad con id "<<vact[i]<<std::endl;
     }
     //Seleccion de la solicitud que se desea aprobar
     do{

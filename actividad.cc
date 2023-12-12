@@ -26,9 +26,9 @@ void VerActividades(std::vector<Actividad> va){
     }while(aux<0 || aux>=va.size());
     //Muestra toda la informacion de la actividad seleccionada
     std::cout<<"Id: "<<(va[aux].GetId())<<std::endl<<
-    "Nombre:"<<(va[aux].GetNombre())<<std::endl<<
-    "Descripcion:"<<(va[aux].GetDescripcion())<<std::endl<<
-    "Fecha:"<<(va[aux].GetFecha())<<std::endl<<
-    "Coste:"<<(va[aux].GetCoste())<<std::endl<<
-    "Aforo:"<<(va[aux].GetAforo())<<std::endl;
+    "Nombre: "<<(va[aux].GetNombre())<<std::endl<<
+    "Descripcion: "<<(va[aux].GetDescripcion())<<std::endl<<
+    "Fecha: "<<(va[aux].GetFecha())<<std::endl<<
+    "Coste: "<<(va[aux].GetCoste())<<std::endl<<
+    "Aforo: "<<(va[aux].GetAforo())<<std::endl;
 }
