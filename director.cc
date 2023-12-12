@@ -40,3 +40,78 @@ void Director::AprobarInscripcion(){
     }
     fs.close();
 }
+
+Actividad Director::ActualizarActividad(Actividad a){
+    std::string aux;
+    float coste;
+    int opc;
+    //Mostramos la informacion de la actividad que vamos a modificar
+    std::cout<<"La actividad seleccionada tiene la siguiente informacion:"<<std::endl<<
+    "Id: "<<(a.GetId())<<std::endl<<
+    "Nombre: "<<(a.GetNombre())<<std::endl<<
+    "Descripcion: "<<(a.GetDescripcion())<<std::endl<<
+    "Fecha: "<<(a.GetFecha())<<std::endl<<
+    "Coste: "<<(a.GetCoste())<<std::endl<<
+    "Aforo: "<<(a.GetAforo())<<std::endl;
+    //El id no se modifica
+    //Modificamos el nombre
+    std::cout<<"Introduzca 0 si quiere modificar el nombre, introduzca cualquier otro valor para NO modificarlo"<<std::endl;
+    std::cin>>opc;
+    if(opc==0){
+        std::cout<<"Introduzca el nuevo nombre de la actividad"<<std::endl;
+        std::cin>>aux;
+        a.SetNombre(aux);
+    }
+    //Modificamos la descripcion
+    std::cout<<"Introduzca 0 si quiere modificar la descripcion, introduzca cualquier otro valor para NO modificarlo"<<std::endl;
+    std::cin>>opc;
+    if(opc==0){
+        std::cout<<"Introduzca la nueva descripcion de la actividad"<<std::endl;
+        std::cin>>aux;
+        a.SetDescripcion(aux);
+    }
+    //Modificamos la fecha
+    std::cout<<"Introduzca 0 si quiere modificar la fecha, introduzca cualquier otro valor para NO modificarlo"<<std::endl;
+    std::cin>>opc;
+    if(opc==0){
+        std::cout<<"Introduzca la nueva fecha de la actividad"<<std::endl;
+        std::cin>>aux;
+        a.SetFecha(aux);
+    }
+    //Modificamos el coste
+    std::cout<<"Introduzca 0 si quiere modificar el coste, introduzca cualquier otro valor para NO modificarlo"<<std::endl;
+    std::cin>>opc;
+    if(opc==0){
+        do{
+            std::cout<<"Introduzca el nuevo coste de la actividad"<<std::endl;
+            std::cin>>coste;
+            if(coste<0){
+                std::cout<<"El coste introducido no es valido"<<std::endl;
+            }
+        }while(coste<0);
+        a.SetCoste(coste);
+    }
+    //Modifcamos el aforo
+    std::cout<<"Introduzca 0 si quiere modificar el aforo, introduzca cualquier otro valor para NO modificarlo"<<std::endl;
+    std::cin>>opc;
+    if(opc==0){
+        do{
+            std::cout<<"Introduzca el nuevo aforo de la actividad"<<std::endl;
+            std::cin>>opc;
+            if(opc<0){
+                std::cout<<"El aforo introducido no es valido"<<std::endl;
+            }
+        }while(opc<0);
+        a.SetAforo(opc);
+    }
+    //Mostramos la actividad modificada
+    std::cout<<"La actividad modificada tiene la siguiente informacion:"<<std::endl<<
+    "Id: "<<(a.GetId())<<std::endl<<
+    "Nombre: "<<(a.GetNombre())<<std::endl<<
+    "Descripcion: "<<(a.GetDescripcion())<<std::endl<<
+    "Fecha: "<<(a.GetFecha())<<std::endl<<
+    "Coste: "<<(a.GetCoste())<<std::endl<<
+    "Aforo: "<<(a.GetAforo())<<std::endl;
+    //Devolvemos la actividad modificada
+    return a;
+}

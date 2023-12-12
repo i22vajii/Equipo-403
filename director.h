@@ -13,6 +13,7 @@
             std::string correo_;
         public:
             void AprobarInscripcion();
+            Actividad ActualizarActividad(Actividad a);
     };
 
 #endif

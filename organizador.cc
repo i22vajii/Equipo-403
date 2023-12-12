@@ -12,10 +12,20 @@ Actividad Organizador::CrearActividad(){
     std::cin>>descripcion;
     std::cout<<"Introduzca la fecha de la actividad"<<std::endl;
     std::cin>>fecha;
-    std::cout<<"Introduzca el coste de la actividad"<<std::endl;
-    std::cin>>coste;
-    std::cout<<"Introduzca el aforo de la actividad"<<std::endl;
-    std::cin>>aforo;
+    do{
+        std::cout<<"Introduzca el coste de la actividad"<<std::endl;
+        std::cin>>coste;
+        if(coste<0){
+            std::cout<<"El coste introducido no es valido"<<std::endl;
+        }
+    }while(coste<0);
+    do{
+        std::cout<<"Introduzca el aforo de la actividad"<<std::endl;
+        std::cin>>aforo;
+        if(aforo<0){
+            std::cout<<"El aforo introducido no es valido"<<std::endl;
+        }
+    }while(aforo<0);
     Actividad a(id,nombre,descripcion,fecha,coste,aforo);
     return a;
 }
