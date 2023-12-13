@@ -1,10 +1,10 @@
 #include<iostream>
 #include<fstream>
 #include"actividad.h"
+#include"usuario.h"
 int main(){
     std::fstream fs;
     std::vector<Actividad> vectact;
-       int rol=0;
        int opc=0;
        std::string id;
        std::string descricion;
@@ -13,7 +13,7 @@ int main(){
        std::string aux;
        float coste;
        int aforo;
-    std::ifstream archivo("Actividades.txt");
+    std::ifstream archivo("Actividades.txt");// vocado
     while(archivo.eof()==false){
         getline(archivo,id);
         getline(archivo,nombre);
@@ -26,6 +26,42 @@ int main(){
         Actividad aux(id,nombre,descricion,fecha,coste,aforo);
         vectact.push_back(aux);
     }
+//inicio de sesion
+    std::string usuario1;
+    std:: string usuario;
+    std::string contraseña1;
+    std::string contraseña;
+    std::string nombre;
+    std::string correo;
+    std::string aux1;
+    int telefono;
+   std::string aux2;
+    int rol;
+    //inicio de sesion
+    std::cout<<"usuario: "<<std::endl;
+    std::cin>>usuario1;
+    std::cout<<"contraseña: "<<std::endl;
+    std::cin>>contraseña1;
+    std::ifstream archivo("sesion.txt");
+    while(archivo.eof()==false){
+        getline(archivo,usuario);
+        getline(archivo,contraseña);
+        getline(archivo,aux1);
+        getline(archivo,nombre);
+        getline(archivo,aux2);
+        getline(archivo,correo);
+        
+        if(usuario1==usuario && contraseña1==contraseña){
+          std::cout<<nombre<<std::endl; 
+          std::cout<<aux2<<std::endl; 
+          std::cout<<correo<<std::endl; 
+          std::cout<<aux1<<std::endl;  
+        }
+    }
+    
+    /*rol=stoi(aux);
+    std::cout<<rol<<std::endl;*/
+
     do{//roles
     std::cout<<"Elija un rol:"<<std:: endl;
     std::cout<<"1. Visitante"<<std:: endl;
@@ -41,26 +77,10 @@ int main(){
             break;
         case 1:// visitante
             do{
-                std::cout<<"Elija una opcion"<<std:: endl;
-                std::cout<<"1. Ver actividades"<<std:: endl;
-                std::cout<<"0. Salir:"<<std:: endl;
-                std:: cin>>opc;
-                system("clear");
-                switch(opc){
-                    case 0:
-                        std::cout<<"Saliendo del programa"<<std::endl;
-                        break;
-                    case 1:
                         //VerActiviades();
-                        break;
-                    default :
-                        std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
-                        break;
-                }
-                }while(opc!=0);
-;
             break;
         case 2:// usuario
+         Usuario u(nombre,telefono,correo);
             do{
     std::cout<<"Elija una opcion"<<std:: endl;
     std::cout<<"1. Ver actividades"<<std:: endl;

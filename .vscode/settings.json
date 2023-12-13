@@ -12,9 +12,10 @@
     "-Wpedantic",
     "-Wshadow",
     "-Wformat=2",
+    "-Wcast-align",
     "-Wconversion",
-    "-Wnull-dereference",
-    "-Wsign-conversion"
+    "-Wsign-conversion",
+    "-Wnull-dereference"
   ],
   "C_Cpp_Runner.msvcWarnings": [
     "/W4",
