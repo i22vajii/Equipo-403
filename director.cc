@@ -1,5 +1,5 @@
 #include"director.h"
-Director::Director(std::string nombrecompleto, int telefono, std::string correo){
+void Director::CargarDirector(std::string nombrecompleto, int telefono, std::string correo){
     nombrecompleto_=nombrecompleto;
     telefono_=telefono;
     correo_=correo;

@@ -13,17 +13,7 @@ void VerActividades(std::vector<Actividad> va){
     int aux;
     std::cout<<"Seleccione la actividad de la que quiere ver toda la informacion:"<<std::endl;
     //Muestra por pantalla todas las actividades
-    for(int i=0;va.size()>i;i++){
-        std::cout<<i<<". "<<(va[i].GetNombre())<<std::endl;
-    }
-    //Selecciona una actividad
-    do{
-        std::cin>>aux;
-        //Comprueba que la actividad seleccionada es valida
-        if(aux<0 || aux>=va.size()){
-            std::cout<<"El numero introducido no es un numero valido, vuelva a introducirlo"<<std::endl;
-        }
-    }while(aux<0 || aux>=va.size());
+    aux=SeleccionarActividad(va);
     //Muestra toda la informacion de la actividad seleccionada
     std::cout<<"Id: "<<(va[aux].GetId())<<std::endl<<
     "Nombre: "<<(va[aux].GetNombre())<<std::endl<<
@@ -31,4 +21,20 @@ void VerActividades(std::vector<Actividad> va){
     "Fecha: "<<(va[aux].GetFecha())<<std::endl<<
     "Coste: "<<(va[aux].GetCoste())<<std::endl<<
     "Aforo: "<<(va[aux].GetAforo())<<std::endl;
+}
+
+int SeleccionarActividad(std::vector<Actividad> vectact){
+    int auxint;
+    for(int i=0;vectact.size()>i;i++){
+        std::cout<<i<<". "<<(vectact[i].GetNombre())<<std::endl;
+    }
+    //Selecciona una actividad
+    do{
+        std::cin>>auxint;
+        //Comprueba que la actividad seleccionada es valida
+        if(auxint<0 || auxint>=vectact.size()){
+            std::cout<<"El numero introducido no es un numero valido, vuelva a introducirlo"<<std::endl;
+        }
+    }while(auxint<0 || auxint>=vectact.size());
+    return auxint;
 }

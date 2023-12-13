@@ -1,9 +1,4 @@
 #include"organizador.h"
-Organizador::Organizador(std::string nombrecompleto, int telefono, std::string correo){
-    nombrecompleto_=nombrecompleto;
-    telefono_=telefono;
-    correo_=correo;
-}
 
 Actividad Organizador::CrearActividad(std::vector<Actividad> va){
     std::string id, nombre, descripcion, fecha;

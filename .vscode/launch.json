@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/ismael/Escritorio/is",
-      "program": "/home/ismael/Escritorio/is/build/Debug/outDebug",
+      "cwd": "/home/usuario/IS",
+      "program": "/home/usuario/IS/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

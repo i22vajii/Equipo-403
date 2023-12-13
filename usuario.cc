@@ -1,6 +1,6 @@
 #include"usuario.h"
 
-Usuario::Usuario(std::string nombrecompleto, int telefono, std::string correo){
+void Usuario::CargarUsuario(std::string nombrecompleto, int telefono, std::string correo){
     nombrecompleto_=nombrecompleto;
     telefono_=telefono;
     correo_=correo;
@@ -66,15 +66,22 @@ bool Usuario::CancelarPreinscripcion(Actividad a){
     }
     return true;
 }
-void Usuario::VerInscripciones(std::vector<Actividad>vectact,std::string nombre){
-  std::string aux;
-  for (int i=0;vectact.size()>i;i++){
-  std::ifstream fs(vectact[i].GetId()+".txt");
-  while(fs.eof()==false){
-    getline(fs,aux);
-    if(aux==nombre){
-      std::cout<<vectact[i].GetNombre()<<std::endl;
+
+void Usuario::VerInscripciones(std::vector<Actividad>vectact, std::string correo){
+    std::string aux;
+    int cont;
+    for (int i=0;vectact.size()>i;i++){
+        cont=0;
+        std::ifstream fs(vectact[i].GetId()+".txt");
+        while(fs.eof()==false){
+            getline(fs,aux);
+            if(aux==correo && cont<vectact[i].GetAforo()){
+                std::cout<<"Inscrito en la actividad: "<<vectact[i].GetNombre()<<std::endl;
+            }
+            if(aux==correo && cont>=vectact[i].GetAforo()){
+                std::cout<<"En lista de espera en la actividad: "<<vectact[i].GetNombre()<<std::endl;
+            }
+            cont++;
+        }
     }
-  }
-}
 }
