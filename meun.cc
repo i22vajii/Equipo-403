@@ -64,6 +64,7 @@ int main(){
                     std::cin>>usuario1;
                     std::cout<<"contraseña: "<<std::endl;
                     std::cin>>contraseña1;
+                    fichero.seekg(0,std::ios::beg);
                     while(fichero.eof()==false){
                         getline(fichero,usuario);
                         getline(fichero,contraseña);
