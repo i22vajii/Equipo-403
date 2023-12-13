@@ -66,3 +66,15 @@ bool Usuario::CancelarPreinscripcion(Actividad a){
     }
     return true;
 }
+void Usuario::VerInscripciones(std::vector<Actividad>vectact,std::string nombre){
+  std::string aux;
+  for (int i=0;vectact.size()>i;i++){
+  std::ifstream fs(vectact[i].GetId()+".txt");
+  while(fs.eof()==false){
+    getline(fs,aux);
+    if(aux==nombre){
+      std::cout<<vectact[i].GetNombre()<<std::endl;
+    }
+  }
+}
+}

@@ -15,6 +15,7 @@
             Usuario(std::string nombrecompleto, int telefono, std::string correo);
             bool PreinscribirUsuario(Actividad a);
             bool CancelarPreinscripcion(Actividad a);
+            void VerInscripciones(std::vector<Actividad>vectact,std::string nombre);
     };
 
 #endif
