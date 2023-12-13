@@ -12,6 +12,7 @@
             int telefono_;
             std::string correo_;
         public:
+            Director(std::string nombrecompleto, int telefono, std::string correo);
             void AprobarInscripcion();
             Actividad ActualizarActividad(Actividad a);
             void MostrarInscritos(Actividad a);

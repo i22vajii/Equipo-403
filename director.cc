@@ -1,4 +1,9 @@
 #include"director.h"
+Director::Director(std::string nombrecompleto, int telefono, std::string correo){
+    nombrecompleto_=nombrecompleto;
+    telefono_=telefono;
+    correo_=correo;
+}
 
 void Director::AprobarInscripcion(){
     std::fstream fs;
