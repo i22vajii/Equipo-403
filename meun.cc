@@ -21,8 +21,7 @@ int main(){
     //Switch
     int rol, opc, opcexterior;
     //Auxiliares
-    int auxint;
-    bool mensaje;
+    int auxint=0;
     // vocado de fichero a vector
     fs.open("Actividades.txt",std::fstream::in);
     while(fs.eof()==false){
@@ -68,9 +67,14 @@ int main(){
                     getline(fs,nombre1);
                     getline(fs,telefono);
                     getline(fs,correo);
+                    //Comprobamos si el usuario existe pero la contraseña es incorrecta
+                    if(usuario1==usuario && contraseña1!=contraseña){
+                        auxint=2;
+                    }
+                    //Comprobamos si el usuario es correcto y la contraseña tambien
                     if(usuario1==usuario && contraseña1==contraseña){
                         rol=stoi(auxrol);
-                        mensaje=true;
+                        auxint=1;
                         switch(rol){
                             case 2:
                                 u.CargarUsuario(nombre1,stoi(telefono),correo);
@@ -86,11 +90,31 @@ int main(){
                 }
                 fs.close();
                 system("clear");
-                if(mensaje!=true){
+                if(auxint==0){
                     std::cout<<"Usuario no registrado"<<std::endl;
                 }
+                if(auxint==2){
+                    std::cout<<"Contraseña erronea"<<std::endl;
+                }
                 case 3:
-                    //Registrarse
+                    std::cout<<"Introduzca su usuario:"<<std::endl;
+                    std::cin>>usuario;
+                    std::cout<<"Introduzca su contraseña:"<<std::endl;
+                    std::cin>>contraseña;
+                    std::cout<<"Introduzca su nombre:"<<std::endl;
+                    std::cin>>nombre1;
+                    std::cout<<"Introduzca su telefono:"<<std::endl;
+                    std::cin>>auxint;
+                    std::cout<<"Introduzca su correo:"<<std::endl;
+                    std::cin>>correo;
+                    fs.open("sesion.txt",std::fstream::app);
+                    fs<<usuario;
+                    fs<<contraseña;
+                    fs<<"2";
+                    fs<<nombre1;
+                    fs<<auxint;
+                    fs<<correo;
+                    fs.close();
                     break;
                 switch(rol){
                     case 2://usuario
@@ -115,11 +139,14 @@ int main(){
                                     auxint=SeleccionarActividad(vectact);
                                     u.PreinscribirUsuario(vectact[auxint]);
                                     break;
+                                    //usar verinscripciones
                                 case 3:
-                                    //CancelarPreisncripcion();
+                                    std::cout<<"Seleccione la actividad de la que desea cancelar la preinscripcion"<<std::endl;
+                                    auxint=SeleccionarActividad(vectact);
+                                    u.CancelarPreinscripcion(vectact[auxint]);
                                     break;
                                 case 4:
-                                    //Pago();
+                                    u.VerInscripciones(vectact,u.GetCorreo());
                                     break;
                                 default:
                                     std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
@@ -136,7 +163,7 @@ int main(){
                             std::cout<<"3. Actualizar Actividad"<<std:: endl;
                             std::cout<<"4. Mostrar Inscritos"<<std:: endl;
                             std::cout<<"0. Salir:"<<std:: endl;
-                            std:: cin>>opc;
+                            std::cin>>opc;
                             system("clear");
                             switch(opc){
                                 case 0:
@@ -146,13 +173,17 @@ int main(){
                                     VerActividades(vectact);
                                     break;
                                 case 2:
-                                    //funcion
+                                    d.AprobarInscripcion();
                                     break;
                                 case 3:
-                                    //funcion
+                                    std::cout<<"Seleccione la actividad que desea actualizar:"<<std::endl;
+                                    auxint=SeleccionarActividad(vectact);
+                                    d.ActualizarActividad(vectact[auxint]);
                                     break;
                                 case 4:
-                                    //funcion
+                                    std::cout<<"Seleccione la actividad de la que quiere ver los usuarios inscritos:"<<std::endl;
+                                    auxint=SeleccionarActividad(vectact);
+                                    d.MostrarInscritos(vectact[auxint]);
                                     break;
                                 default:
                                     std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
@@ -179,16 +210,23 @@ int main(){
                                     VerActividades(vectact);
                                     break;
                                 case 2:
-                                    //funcion
+                                    o.AprobarInscripcion();
                                     break;
                                 case 3:
-                                    //funcion
+                                    std::cout<<"Seleccione la actividad que desea actualizar:"<<std::endl;
+                                    auxint=SeleccionarActividad(vectact);
+                                    o.ActualizarActividad(vectact[auxint]);
                                     break;
                                 case 4:
-                                    //funcion
+                                    std::cout<<"Seleccione la actividad de la que quiere ver los usuarios inscritos:"<<std::endl;
+                                    auxint=SeleccionarActividad(vectact);
+                                    o.MostrarInscritos(vectact[auxint]);
+                                    break;
+                                case 5:
+                                    vectact.push_back(o.CrearActividad(vectact));
                                     break;
                                 default:
-                                    std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
+                                    std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 5"<<std:: endl;
                                     break;
                             }
                         }while(opc!=0);

@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/usuario/IS",
-      "program": "/home/usuario/IS/build/Debug/outDebug",
+      "cwd": "/home/ubuntupepe/Escritorio/TABAJO IS",
+      "program": "/home/ubuntupepe/Escritorio/TABAJO IS/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
