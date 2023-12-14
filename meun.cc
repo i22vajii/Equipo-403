@@ -8,6 +8,7 @@
 #include"organizador.h"
 
 int main(){
+    system("clear");
     std::fstream fs;
     Usuario u;
     Director d;
@@ -56,9 +57,9 @@ int main(){
             case 2: 
                 //inicio de sesion
                 auxint=0;
-                std::cout<<"usuario: "<<std::endl;
+                std::cout<<"Introduzca su usuario: "<<std::endl;
                 std::cin>>usuario1;
-                std::cout<<"contraseña: "<<std::endl;
+                std::cout<<"Introduzca su contraseña: "<<std::endl;
                 std::cin>>contraseña1;
                 fs.open("sesion.txt",std::fstream::in);
                 while(fs.eof()==false){
@@ -100,6 +101,7 @@ int main(){
                 switch(rol){
                     case 2://usuario
                         do{
+                            std::cout<<"Accediendo como usuario"<<std::endl;
                             std::cout<<std::endl<<"Elija una opcion"<<std::endl;
                             std::cout<<"1. Ver actividades"<<std:: endl;
                             std::cout<<"2. Hacer preinscripcion"<<std:: endl;
@@ -118,11 +120,13 @@ int main(){
                                 case 2:
                                     std::cout<<"Seleccione una actividad:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
+                                    system("clear");
                                     u.PreinscribirUsuario(vectact[auxint]);
                                     break;
                                 case 3:
                                     std::cout<<"Seleccione la actividad de la que desea cancelar la preinscripcion"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
+                                    system("clear");
                                     u.CancelarPreinscripcion(vectact[auxint]);
                                     break;
                                 case 4:
@@ -136,6 +140,7 @@ int main(){
                         break;
                     case 3://director
                         do{
+                            std::cout<<"Accediendo como director academico"<<std::endl;
                             std::cout<<std::endl<<"Elija una opcion"<<std:: endl;
                             std::cout<<"1. Ver actividades"<<std:: endl;
                             std::cout<<"2. Aprobar preisncripciones"<<std:: endl;
@@ -151,17 +156,19 @@ int main(){
                                 case 1:
                                     VerActividades(vectact);
                                     break;
-                                case 2://Hay que mirarlo 
+                                case 2:
                                     d.AprobarInscripcion();
                                     break;
                                 case 3:
                                     std::cout<<"Seleccione la actividad que desea actualizar:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
+                                    system("clear");
                                     vectact[auxint]=d.ActualizarActividad(vectact[auxint]);
                                     break;
                                 case 4:
                                     std::cout<<"Seleccione la actividad de la que quiere ver los usuarios inscritos:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
+                                    system("clear");
                                     d.MostrarInscritos(vectact[auxint]);
                                     break;
                                 default:
@@ -172,6 +179,7 @@ int main(){
                         break;
                     case 4://organizador
                         do{
+                            std::cout<<"Accediendo como organizador"<<std::endl;
                             std::cout<<std::endl<<"Elija una opcion"<<std:: endl;
                             std::cout<<"1. Ver actividades"<<std:: endl;
                             std::cout<<"2. Aprobar preisncripciones"<<std:: endl;
@@ -188,17 +196,19 @@ int main(){
                                 case 1:
                                     VerActividades(vectact);
                                     break;
-                                case 2://Hay que mirarlo 
+                                case 2:
                                     o.AprobarInscripcion();
                                     break;
                                 case 3:
                                     std::cout<<"Seleccione la actividad que desea actualizar:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
+                                    system("clear");
                                     vectact[auxint]=o.ActualizarActividad(vectact[auxint]);
                                     break;
                                 case 4:
                                     std::cout<<"Seleccione la actividad de la que quiere ver los usuarios inscritos:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
+                                    system("clear");
                                     o.MostrarInscritos(vectact[auxint]);
                                     break;
                                 case 5:
@@ -256,16 +266,3 @@ int main(){
     }
     fs.close();
 }
-
-/*CB1
-Charla Ciberseguridad
-GHASJFDVHJFJDFBHJFJKHDJKJKDFSKassshjdfjkdsjjkdbfksj
-01/12/2004
-10.25
-30
-CB2
-Charl
-GHASJFDVHJFJDFBHJFJKHDJKJKDFSKassshjdfjkdsjjkdbfksj
-01/12/2004
-10.25
-30*/

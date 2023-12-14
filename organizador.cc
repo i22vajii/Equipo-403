@@ -15,14 +15,16 @@ Actividad Organizador::CrearActividad(std::vector<Actividad> va){
             }
         }
         if(aux>0){
-            std::cout<<"Ya existe una actividad que tiene ese id"<<std::endl;
+            std::cout<<"Ya existe una actividad con ese id"<<std::endl;
         }
     }while(aux>0);
     std::cout<<"Introduzca el nombre de la actividad"<<std::endl;
-    std::cin>>nombre;
+    getchar();
+    std::getline(std::cin,nombre);
     std::cout<<"Introduzca la descripcion de la actividad"<<std::endl;
-    std::cin>>descripcion;
-    std::cout<<"Introduzca la fecha de la actividad"<<std::endl;
+    getchar();
+    std::getline(std::cin,descripcion);
+    std::cout<<"Introduzca la fecha de la actividad (dd/mm/aaaa)"<<std::endl;
     std::cin>>fecha;
     //Comprobamos que coste>=0
     do{

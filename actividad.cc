@@ -14,6 +14,7 @@ void VerActividades(std::vector<Actividad> va){
     std::cout<<"Seleccione la actividad de la que quiere ver toda la informacion:"<<std::endl;
     //Muestra por pantalla todas las actividades
     aux=SeleccionarActividad(va);
+    system("clear");
     //Muestra toda la informacion de la actividad seleccionada
     std::cout<<"Id: "<<(va[aux].GetId())<<std::endl<<
     "Nombre: "<<(va[aux].GetNombre())<<std::endl<<
