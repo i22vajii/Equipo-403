@@ -55,6 +55,7 @@ int main(){
                 break;
             case 2: 
                 //inicio de sesion
+                auxint=0;
                 std::cout<<"usuario: "<<std::endl;
                 std::cin>>usuario1;
                 std::cout<<"contraseña: "<<std::endl;
@@ -96,26 +97,6 @@ int main(){
                 if(auxint==2){
                     std::cout<<"Contraseña erronea"<<std::endl;
                 }
-                case 3:
-                    std::cout<<"Introduzca su usuario:"<<std::endl;
-                    std::cin>>usuario;
-                    std::cout<<"Introduzca su contraseña:"<<std::endl;
-                    std::cin>>contraseña;
-                    std::cout<<"Introduzca su nombre:"<<std::endl;
-                    std::cin>>nombre1;
-                    std::cout<<"Introduzca su telefono:"<<std::endl;
-                    std::cin>>auxint;
-                    std::cout<<"Introduzca su correo:"<<std::endl;
-                    std::cin>>correo;
-                    fs.open("sesion.txt",std::fstream::app);
-                    fs<<usuario;
-                    fs<<contraseña;
-                    fs<<"2";
-                    fs<<nombre1;
-                    fs<<auxint;
-                    fs<<correo;
-                    fs.close();
-                    break;
                 switch(rol){
                     case 2://usuario
                         do{
@@ -124,8 +105,8 @@ int main(){
                             std::cout<<"2. Hacer preinscripcion"<<std:: endl;
                             std::cout<<"3. Cancelar preinscripcion"<<std:: endl;
                             std::cout<<"4. Ver mis preinscripciones"<<std:: endl;
-                            std::cout<<"0. Salir:"<<std:: endl;
-                            std:: cin>>opc;
+                            std::cout<<"0. Salir"<<std:: endl;
+                            std::cin>>opc;
                             system("clear");
                             switch(opc){
                                 case 0:
@@ -139,7 +120,6 @@ int main(){
                                     auxint=SeleccionarActividad(vectact);
                                     u.PreinscribirUsuario(vectact[auxint]);
                                     break;
-                                    //usar verinscripciones
                                 case 3:
                                     std::cout<<"Seleccione la actividad de la que desea cancelar la preinscripcion"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
@@ -153,7 +133,6 @@ int main(){
                                     break;
                             }
                             }while(opc!=0);
-                                break;
                         break;
                     case 3://director
                         do{
@@ -162,7 +141,7 @@ int main(){
                             std::cout<<"2. Aprobar preisncripciones"<<std:: endl;
                             std::cout<<"3. Actualizar Actividad"<<std:: endl;
                             std::cout<<"4. Mostrar Inscritos"<<std:: endl;
-                            std::cout<<"0. Salir:"<<std:: endl;
+                            std::cout<<"0. Salir"<<std:: endl;
                             std::cin>>opc;
                             system("clear");
                             switch(opc){
@@ -172,13 +151,13 @@ int main(){
                                 case 1:
                                     VerActividades(vectact);
                                     break;
-                                case 2:
+                                case 2://Hay que mirarlo 
                                     d.AprobarInscripcion();
                                     break;
                                 case 3:
                                     std::cout<<"Seleccione la actividad que desea actualizar:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
-                                    d.ActualizarActividad(vectact[auxint]);
+                                    vectact[auxint]=d.ActualizarActividad(vectact[auxint]);
                                     break;
                                 case 4:
                                     std::cout<<"Seleccione la actividad de la que quiere ver los usuarios inscritos:"<<std::endl;
@@ -199,7 +178,7 @@ int main(){
                             std::cout<<"3. Actualizar Actividad"<<std:: endl;
                             std::cout<<"4. Mostrar Inscritos"<<std:: endl;
                             std::cout<<"5. Crear Actividad"<<std::endl;
-                            std::cout<<"0. Salir:"<<std:: endl;
+                            std::cout<<"0. Salir"<<std:: endl;
                             std:: cin>>opc;
                             system("clear");
                             switch(opc){
@@ -209,13 +188,13 @@ int main(){
                                 case 1:
                                     VerActividades(vectact);
                                     break;
-                                case 2:
+                                case 2://Hay que mirarlo 
                                     o.AprobarInscripcion();
                                     break;
                                 case 3:
                                     std::cout<<"Seleccione la actividad que desea actualizar:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
-                                    o.ActualizarActividad(vectact[auxint]);
+                                    vectact[auxint]=o.ActualizarActividad(vectact[auxint]);
                                     break;
                                 case 4:
                                     std::cout<<"Seleccione la actividad de la que quiere ver los usuarios inscritos:"<<std::endl;
@@ -232,6 +211,29 @@ int main(){
                         }while(opc!=0);
                         break;
                 }
+                break;
+        case 3:
+            std::cout<<"Introduzca su usuario (sin espacios):"<<std::endl;
+            std::cin>>usuario;
+            std::cout<<"Introduzca su contraseña:"<<std::endl;
+            std::cin>>contraseña;
+            std::cout<<"Introduzca su nombre:"<<std::endl;
+            getchar();
+            std::getline(std::cin,nombre1);
+            std::cout<<"Introduzca su telefono:"<<std::endl;
+            std::cin>>auxint;
+            std::cout<<"Introduzca su correo:"<<std::endl;
+            std::cin>>correo;
+
+            fs.open("sesion.txt",std::fstream::app);
+            fs<<usuario<<std::endl;
+            fs<<contraseña<<std::endl;
+            fs<<"2"<<std::endl;
+            fs<<nombre1<<std::endl;
+            fs<<auxint<<std::endl;
+            fs<<correo<<std::endl;
+            fs.close();
+            
             break;
         default:
             std::cout<<"El valor introducido no es un valor valido"<<std::endl;
@@ -246,7 +248,24 @@ int main(){
         fs<<(vectact[i].GetDescripcion())<<std::endl;
         fs<<(vectact[i].GetFecha())<<std::endl;
         fs<<(vectact[i].GetCoste())<<std::endl;
-        fs<<(vectact[i].GetAforo())<<std::endl;
+        fs<<(vectact[i].GetAforo());
+        //Para que no duplique la ultimna actividad
+        if(vectact.size()>(i+1)){
+            fs<<std::endl;
+        }
     }
     fs.close();
 }
+
+/*CB1
+Charla Ciberseguridad
+GHASJFDVHJFJDFBHJFJKHDJKJKDFSKassshjdfjkdsjjkdbfksj
+01/12/2004
+10.25
+30
+CB2
+Charl
+GHASJFDVHJFJDFBHJFJKHDJKJKDFSKassshjdfjkdsjjkdbfksj
+01/12/2004
+10.25
+30*/

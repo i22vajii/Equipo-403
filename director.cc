@@ -126,14 +126,19 @@ void Director::MostrarInscritos(Actividad a){
     std::string usu;
     int cont=0;
     fs.open(a.GetId()+".txt",std::fstream::in);
-    std::cout<<"Los usuarios inscritos son:"<<std::endl;
-    while(fs.eof()==false){
-        getline(fs,usu);
-        std::cout<<usu<<std::endl;
-        cont++;
-        if(cont==a.GetAforo()){
-            std::cout<<"Los usuarios en lista de espera son:"<<std::endl;
+    if(fs.fail()==false){
+        std::cout<<"Los usuarios inscritos son:"<<std::endl;
+        while(fs.eof()==false){
+            getline(fs,usu);
+            std::cout<<usu<<std::endl;
+            cont++;
+            if(cont==a.GetAforo()){
+                std::cout<<"Los usuarios en lista de espera son:"<<std::endl;
+            }
         }
+    }
+    else{
+        std::cout<<"0 personas inscritas en esta actividad"<<std::endl;
     }
     fs.close();
 }
