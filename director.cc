@@ -15,10 +15,12 @@ void Director::AprobarInscripcion(){
     fs.open("Solicitudes.txt",std::fstream::in);
     while(fs.eof()==false){
         getline(fs,aux);
+        //Comprobamos que no es el ultimo std::endl
         if(aux!=""){
         vact.push_back(aux);
         }
         getline(fs,aux);
+        //Comprobamos que no es el ultimo std::endl
         if(aux!=""){
         vusu.push_back(aux);
         }
@@ -61,6 +63,7 @@ Actividad Director::ActualizarActividad(Actividad a){
     std::string aux;
     float coste;
     int opc;
+    bool valido=true;
     //Mostramos la informacion de la actividad que vamos a modificar
     std::cout<<"La actividad seleccionada tiene la siguiente informacion:"<<std::endl<<
     "Id: "<<(a.GetId())<<std::endl<<
@@ -90,8 +93,23 @@ Actividad Director::ActualizarActividad(Actividad a){
     std::cout<<"Introduzca 0 si quiere modificar la fecha, introduzca cualquier otro valor para NO modificarlo"<<std::endl;
     std::cin>>opc;
     if(opc==0){
-        std::cout<<"Introduzca la nueva fecha de la actividad (dd/mm/aaaa)"<<std::endl;
-        std::cin>>aux;
+        do{
+            std::cout<<"Introduzca la fecha de la actividad (dd/mm/aaaa)"<<std::endl;
+            std::cin>>aux;
+            if(aux.size()!=10){
+                valido=false;
+                std::cout<<"La fecha introducida no tiene el formato correcto"<<std::endl;
+            }
+            else{
+                valido= FormatoFecha(aux);
+                if(valido==true){
+                    valido=ComprobarFecha(aux);
+                    if(valido==false){
+                        std::cout<<"La fecha introducida no es mayor o igual a la actual"<<std::endl;
+                    }
+                }
+            }
+        }while(valido==false);
         a.SetFecha(aux);
     }
     //Modificamos el coste

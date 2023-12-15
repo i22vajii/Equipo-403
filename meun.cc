@@ -35,7 +35,9 @@ int main(){
         getline(fs,aux);
         aforo=stoi(aux);
         Actividad aux(id,nombre,descripcion,fecha,coste,aforo);
+        //if(ComprobarFecha(fecha)==true){
         vectact.push_back(aux);
+        //}
     }
     fs.close();
     

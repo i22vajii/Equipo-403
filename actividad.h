@@ -32,5 +32,6 @@
     void VerActividades(std::vector<Actividad> va);
     int SeleccionarActividad(std::vector<Actividad> vectact);
     bool ComprobarFecha(std::string fecha);
+    bool FormatoFecha(std::string fecha);
     
 #endif

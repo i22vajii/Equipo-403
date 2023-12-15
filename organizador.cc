@@ -25,6 +25,7 @@ Actividad Organizador::CrearActividad(std::vector<Actividad> va){
     std::cout<<"Introduzca la descripcion de la actividad"<<std::endl;
     getchar();
     std::getline(std::cin,descripcion);
+    //Comprobamos que la fecha se valida y que sea mayor o igual a la actual
     do{
         std::cout<<"Introduzca la fecha de la actividad (dd/mm/aaaa)"<<std::endl;
         std::cin>>fecha;
@@ -33,9 +34,12 @@ Actividad Organizador::CrearActividad(std::vector<Actividad> va){
             std::cout<<"La fecha introducida no tiene el formato correcto"<<std::endl;
         }
         else{
-            valido=ComprobarFecha(fecha);
-            if(valido==false){
-                std::cout<<"La fecha introducida no es mayor o igual a la actual"<<std::endl;
+            valido= FormatoFecha(fecha);
+            if(valido==true){
+                valido=ComprobarFecha(fecha);
+                if(valido==false){
+                    std::cout<<"La fecha introducida no es mayor o igual a la actual"<<std::endl;
+                }
             }
         }
     }while(valido==false);
