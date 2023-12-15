@@ -78,7 +78,8 @@ Actividad Director::ActualizarActividad(Actividad a){
     std::cin>>opc;
     if(opc==0){
         std::cout<<"Introduzca el nuevo nombre de la actividad"<<std::endl;
-        std::cin>>aux;
+        getchar();
+        std::getline(std::cin,aux);
         a.SetNombre(aux);
     }
     //Modificamos la descripcion
@@ -86,7 +87,8 @@ Actividad Director::ActualizarActividad(Actividad a){
     std::cin>>opc;
     if(opc==0){
         std::cout<<"Introduzca la nueva descripcion de la actividad"<<std::endl;
-        std::cin>>aux;
+        getchar();
+        std::getline(std::cin,aux);
         a.SetDescripcion(aux);
     }
     //Modificamos la fecha
@@ -158,11 +160,13 @@ void Director::MostrarInscritos(Actividad a){
     if(fs.fail()==false){
         std::cout<<"Los usuarios inscritos son:"<<std::endl;
         while(fs.eof()==false){
-            getline(fs,usu);
-            std::cout<<usu<<std::endl;
-            cont++;
             if(cont==a.GetAforo()){
                 std::cout<<"Los usuarios en lista de espera son:"<<std::endl;
+            }
+            getline(fs,usu);
+            if(usu!=""){
+                std::cout<<usu<<std::endl;
+                cont++;
             }
         }
     }

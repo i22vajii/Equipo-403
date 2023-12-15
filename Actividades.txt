@@ -1,15 +1,3 @@
-CB1
-Pepe
-GHASJFDVHJFJDFBHJFJKHDJKJKDFSKassshjdfjkdsjjkdbfksj
-01/12/2004
-10.25
-30
-CB2
-Charl
-GHASJFDVHJFJDFBHJFJKHDJKJKDFSKassshjdfjkdsjjkdbfksj
-01/12/2004
-10.25
-1
 CB3
 Pepe
 pepe
@@ -17,8 +5,14 @@ pepe
 21
 21
 CB4
-M
-M
-01/12/1985
+Ponencia sobre criminologia
+En esta charla va a venir el doctor en criminologia Jack el Destripador a hablarnos un poco sobre sus experiencias
+29/02/2024
+20
 25
-25
+AC2
+Prueba
+amos a probar que se hace bien
+01/12/2025
+56
+2

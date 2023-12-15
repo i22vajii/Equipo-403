@@ -23,7 +23,7 @@ int main(){
     int rol, opc, opcexterior;
     //Auxiliares
     int auxint=0;
-    // vocado de fichero a vector
+    //Volcado de fichero a vector
     fs.open("Actividades.txt",std::fstream::in);
     while(fs.eof()==false){
         getline(fs,id);
@@ -35,9 +35,10 @@ int main(){
         getline(fs,aux);
         aforo=stoi(aux);
         Actividad aux(id,nombre,descripcion,fecha,coste,aforo);
-        //if(ComprobarFecha(fecha)==true){
-        vectact.push_back(aux);
-        //}
+        //Comprobamos que las actividades aun no se han realizado
+        if(ComprobarFecha(fecha)==true){
+            vectact.push_back(aux);
+        }
     }
     fs.close();
     
@@ -57,7 +58,7 @@ int main(){
                 VerActividades(vectact);
                 break;
             case 2: 
-                //inicio de sesion
+                //Inicio de sesion
                 auxint=0;
                 std::cout<<"Introduzca su usuario: "<<std::endl;
                 std::cin>>usuario1;
@@ -101,9 +102,9 @@ int main(){
                     std::cout<<"Contraseña erronea"<<std::endl;
                 }
                 switch(rol){
-                    case 2://usuario
+                    case 2://Usuario
+                        std::cout<<"Accediendo como usuario"<<std::endl;
                         do{
-                            std::cout<<"Accediendo como usuario"<<std::endl;
                             std::cout<<std::endl<<"Elija una opcion"<<std::endl;
                             std::cout<<"1. Ver actividades"<<std:: endl;
                             std::cout<<"2. Hacer preinscripcion"<<std:: endl;
@@ -140,9 +141,9 @@ int main(){
                             }
                             }while(opc!=0);
                         break;
-                    case 3://director
+                    case 3://Director Academico
+                        std::cout<<"Accediendo como director academico"<<std::endl;
                         do{
-                            std::cout<<"Accediendo como director academico"<<std::endl;
                             std::cout<<std::endl<<"Elija una opcion"<<std:: endl;
                             std::cout<<"1. Ver actividades"<<std:: endl;
                             std::cout<<"2. Aprobar preisncripciones"<<std:: endl;
@@ -179,9 +180,9 @@ int main(){
                             }
                         }while(opc!=0);
                         break;
-                    case 4://organizador
+                    case 4://Organizador
+                        std::cout<<"Accediendo como organizador"<<std::endl;
                         do{
-                            std::cout<<"Accediendo como organizador"<<std::endl;
                             std::cout<<std::endl<<"Elija una opcion"<<std:: endl;
                             std::cout<<"1. Ver actividades"<<std:: endl;
                             std::cout<<"2. Aprobar preisncripciones"<<std:: endl;
@@ -252,7 +253,7 @@ int main(){
             break;
         }                   
     }while(opcexterior!=0);
-    //vocado de vector a fichero
+    //Volcado de vector a fichero
     fs.open("Actividades.txt",std::fstream::out);
     for(int i=0;vectact.size()>i;i++){
         fs<<(vectact[i].GetId())<<std::endl;
