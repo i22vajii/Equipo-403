@@ -39,3 +39,47 @@ int SeleccionarActividad(std::vector<Actividad> vectact){
     }while(auxint<0 || auxint>=vectact.size());
     return auxint;
 }
+
+bool ComprobarFecha(std::string fecha){
+    time_t tiempo = time(NULL);
+    char hoy[11];
+    int n, nhoy;
+    //Guardamos en hoy la fecha actual
+    strftime(hoy,11,"%d/%m/%Y",localtime(&tiempo));
+    nhoy= hoy[6]*1000 + hoy[7]*100 + hoy[8]*10 + hoy[9];
+    n= fecha[6]*1000 + fecha[7]*100 + fecha[8]*10 + fecha[9];
+    //Comprobamos si el año actual es mayor que el introducido
+    if(nhoy>n){
+        return false;
+    }
+    //Comprobamos si el año actual es menor que el introducido
+    else if(n>nhoy){
+        return true;
+    }
+    //Comprobamos si el año actual es igual que el introducido
+    else{
+        nhoy= hoy[3]*10 + hoy[4];
+        n= fecha[3]*10 + fecha[4];
+        //Comprobamos si el mes actual es mayor que el introducido
+        if(nhoy>n){
+            return false;
+        }
+        //Comprobamos si el mes actual es menor que el introducido
+        else if(n>nhoy){
+            return true;
+        }
+        //Comprobamos si el mes actual es igual que el introducido
+        else{
+            nhoy= hoy[0]*10 + hoy[1];
+            n= fecha[0]*10 + fecha[1];
+            //Comprobamos si el dia actual es mayor que el introducido
+            if(nhoy>n){
+                return false;
+            }
+            //Comprobamos si el dia actual es igual o menor que el introducido
+            else{
+                return true;
+            }
+        }
+    }
+}

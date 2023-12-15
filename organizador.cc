@@ -4,6 +4,7 @@ Actividad Organizador::CrearActividad(std::vector<Actividad> va){
     std::string id, nombre, descripcion, fecha;
     float coste;
     int aforo, aux;
+    bool valido;
     do{
         aux=0;
         std::cout<<"Introduzca el id de la actividad, ten en cuenta que posteriormente no se podra modificar"<<std::endl;
@@ -24,8 +25,20 @@ Actividad Organizador::CrearActividad(std::vector<Actividad> va){
     std::cout<<"Introduzca la descripcion de la actividad"<<std::endl;
     getchar();
     std::getline(std::cin,descripcion);
-    std::cout<<"Introduzca la fecha de la actividad (dd/mm/aaaa)"<<std::endl;
-    std::cin>>fecha;
+    do{
+        std::cout<<"Introduzca la fecha de la actividad (dd/mm/aaaa)"<<std::endl;
+        std::cin>>fecha;
+        if(fecha.size()!=10){
+            valido=false;
+            std::cout<<"La fecha introducida no tiene el formato correcto"<<std::endl;
+        }
+        else{
+            valido=ComprobarFecha(fecha);
+            if(valido==false){
+                std::cout<<"La fecha introducida no es mayor o igual a la actual"<<std::endl;
+            }
+        }
+    }while(valido==false);
     //Comprobamos que coste>=0
     do{
         std::cout<<"Introduzca el coste de la actividad"<<std::endl;
