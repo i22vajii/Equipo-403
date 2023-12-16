@@ -18,5 +18,7 @@
             void VerInscripciones(std::vector<Actividad>vectact,std::string correo);
             std::string GetCorreo(){return correo_;}
     };
+    
+    void RegistrarUsuario();
 
 #endif

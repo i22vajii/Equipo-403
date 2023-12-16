@@ -226,27 +226,7 @@ int main(){
                 }
                 break;
         case 3:
-            std::cout<<"Introduzca su usuario (sin espacios):"<<std::endl;
-            std::cin>>usuario;
-            std::cout<<"Introduzca su contraseña:"<<std::endl;
-            std::cin>>contraseña;
-            std::cout<<"Introduzca su nombre:"<<std::endl;
-            getchar();
-            std::getline(std::cin,nombre1);
-            std::cout<<"Introduzca su telefono:"<<std::endl;
-            std::cin>>auxint;
-            std::cout<<"Introduzca su correo:"<<std::endl;
-            std::cin>>correo;
-
-            fs.open("sesion.txt",std::fstream::app);
-            fs<<usuario<<std::endl;
-            fs<<contraseña<<std::endl;
-            fs<<"2"<<std::endl;
-            fs<<nombre1<<std::endl;
-            fs<<auxint<<std::endl;
-            fs<<correo<<std::endl;
-            fs.close();
-            
+            RegistrarUsuario();
             break;
         default:
             std::cout<<"El valor introducido no es un valor valido"<<std::endl;
