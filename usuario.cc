@@ -43,25 +43,30 @@ bool Usuario::CancelarPreinscripcion(Actividad a){
     std::string aux;
     std::fstream fs;
     bool borrar=false;
+    //Recorremos todo el fichero de la activida pasada como parametro
     fs.open(a.GetId()+".txt", std::fstream::in);
     if(fs.fail()==false){
         while(fs.eof()==false){
             getline(fs,aux);
+            //Añadimos todos los correos a un vector menos el del usuario que queremos eliminar
             if(aux!=correo_){
                 vusu.push_back(aux);
             }
+            //Eliminamos al ususario
             else{
                 borrar=true;
                 std::cout<<"Usuario borrado de la actividad"<<std::endl;
             }
         }
         fs.close();
+        //Escribimos al resto de usuarios en el fichero de la actividad
         fs.open(a.GetId()+".txt", std::fstream::out);
         for(int i=0; vusu.size()>i; i++){
             fs<<vusu[i]<<std::endl;
         }
     }
     fs.close();
+    //Si el usuario no esta en la actividad
     if(borrar!=true){
         std::cout<<"El usuario no se ha encontrado en la actividad"<<std::endl;
         return false;
@@ -72,16 +77,20 @@ bool Usuario::CancelarPreinscripcion(Actividad a){
 void Usuario::VerInscripciones(std::vector<Actividad>vectact, std::string correo){
     std::string aux;
     int cont, auxint=0;
+    //Recorremos todas las actividades
     for (int i=0;vectact.size()>i;i++){
         cont=0;
         std::ifstream fs(vectact[i].GetId()+".txt");
         if(fs.fail()==false){
+            //Comprobamos que esta en el fichro de la actividad
             while(fs.eof()==false){
                 getline(fs,aux);
+                //Comprobamos si el usuario esta inscrito y lo escribimos por pantalla
                 if(aux==correo && cont<vectact[i].GetAforo()){
                     auxint++;
                     std::cout<<"Inscrito en la actividad: "<<vectact[i].GetNombre()<<std::endl;
                 }
+                //Comprobamos si el ususario esta en la lista de espera y lo escribimos por pantalla
                 if(aux==correo && cont>=vectact[i].GetAforo()){
                     auxint++;
                     std::cout<<"En lista de espera en la actividad: "<<vectact[i].GetNombre()<<std::endl;
@@ -145,4 +154,5 @@ void RegistrarUsuario(){
     fs<<telefono<<std::endl;
     fs<<correo<<std::endl;
     fs.close();
+    std::cout<<"Usuario registrado"<<std::endl;
 }
