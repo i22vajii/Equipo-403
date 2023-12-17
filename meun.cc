@@ -194,6 +194,7 @@ int main(){
                             std::cout<<"3. Actualizar Actividad"<<std:: endl;
                             std::cout<<"4. Mostrar Inscritos"<<std:: endl;
                             std::cout<<"5. Crear Actividad"<<std::endl;
+                            std::cout<<"6. Enviar email"<<std::endl;
                             std::cout<<"0. Salir"<<std:: endl;
                             std:: cin>>opc;
                             system("clear");
@@ -222,6 +223,9 @@ int main(){
                                 case 5:
                                     vectact.push_back(o.CrearActividad(vectact));
                                     break;
+                                case 6:
+                                     o.EnviarMail();
+                                     break;
                                 default:
                                     std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 5"<<std:: endl;
                                     break;
