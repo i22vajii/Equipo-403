@@ -17,6 +17,11 @@ int main(){
         std::string id, descripcion, fecha, nombre, aux;
         float coste;
         int aforo;
+    std::vector<std::string> vfac;
+        vfac.push_back("Facultad de ciencias");
+        vfac.push_back("EPSC");
+        vfac.push_back("Facultad de derecho");
+        vfac.push_back("Facultad de ciencias del trabajo");
     //Variables login:
     std::string usuario1, usuario, contraseña1, contraseña, nombre1, correo, auxrol, telefono,facultad;
     //Switch
@@ -137,7 +142,7 @@ int main(){
                                     u.VerInscripciones(vectact,u.GetCorreo());
                                     break;
                                 default:
-                                    std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
+                                    std::cout<<"El valor introducido no es un valor valido"<<std:: endl;
                                     break;
                             }
                             }while(opc!=0);
@@ -177,10 +182,10 @@ int main(){
                                     d.MostrarInscritos(vectact[auxint]);
                                     break;
                                 case 5:
-                                    d.EnviarMail();
+                                    d.EnviarMail(vfac);
                                     break;
                                 default:
-                                    std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;
+                                    std::cout<<"El valor introducido no es un valor valido"<<std:: endl;
                                     break;
                             }
                         }while(opc!=0);
@@ -193,8 +198,8 @@ int main(){
                             std::cout<<"2. Aprobar preisncripciones"<<std:: endl;
                             std::cout<<"3. Actualizar Actividad"<<std:: endl;
                             std::cout<<"4. Mostrar Inscritos"<<std:: endl;
-                            std::cout<<"5. Crear Actividad"<<std::endl;
-                            std::cout<<"6. Enviar email"<<std::endl;
+                            std::cout<<"5. Enviar email"<<std::endl;
+                            std::cout<<"6. Crear Actividad"<<std::endl;
                             std::cout<<"0. Salir"<<std:: endl;
                             std:: cin>>opc;
                             system("clear");
@@ -221,13 +226,13 @@ int main(){
                                     o.MostrarInscritos(vectact[auxint]);
                                     break;
                                 case 5:
-                                    vectact.push_back(o.CrearActividad(vectact));
+                                    o.EnviarMail(vfac);
                                     break;
                                 case 6:
-                                     o.EnviarMail();
-                                     break;
+                                    vectact.push_back(o.CrearActividad(vectact));
+                                    break;
                                 default:
-                                    std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 5"<<std:: endl;
+                                    std::cout<<"El valor introducido no es un valor valido"<<std:: endl;
                                     break;
                             }
                         }while(opc!=0);
@@ -235,7 +240,7 @@ int main(){
                 }
                 break;
         case 3:
-            RegistrarUsuario();
+            RegistrarUsuario(vfac);
             break;
         default:
             std::cout<<"El valor introducido no es un valor valido"<<std::endl;

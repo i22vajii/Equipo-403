@@ -180,53 +180,46 @@ void Director::MostrarInscritos(Actividad a){
     fs.close();
 }
 
-void Director::EnviarMail(){
+void Director::EnviarMail(std::vector<std::string> vfac){
     std::fstream fs;
     std::string eligefacultad;
     std::string usuario, contraseña, nombre1, correo, auxrol, telefono,facultad;
-    std::vector<std::string> vfac;
-   // vfac[0]="Facultad de ciencias";
-    //vfac[1]="EPSC";
-   // vfac[2]="Facultad de derecho";
-   // vfac[3]="Facutad de ciencias del trabajo";
-    vfac.push_back("Facultad de ciencias");
-    vfac.push_back("EPSC");
-    vfac.push_back("Facultad de derecho");
-    vfac.push_back("Facultad de ciencias");
     int cont=0;
     int opc=0;
     do{
         std::cout<<"Elija una facultad:"<<std::endl;
-        std::cout<<"1."+vfac[0]<<std::endl;
-        std::cout<<"2."+vfac[1]<<std::endl;
-        std::cout<<"3."+vfac[2]<<std::endl;
-        std::cout<<"4."+vfac[3]<<std::endl;
-        std::cout<<"0.Salir"<<std::endl;
+        std::cout<<"0. Salir"<<std::endl;
+        for(int i=0; vfac.size()>i; i++){
+            std::cout<<(i+1)<<". "<<vfac[i]<<std::endl;
+        }
         std::cin>>opc;
         system("clear");
-        if(opc>0 && opc<5){
+        if(opc>0 && opc<=vfac.size()){
             eligefacultad=vfac[opc-1];
-    fs.open("sesion.txt",std::fstream::in);
-    if(fs.fail()==false){
-        std::cout<<"Email eviados a :"<<std::endl;
-        while(fs.eof()==false){
-            getline(fs,usuario);
-            getline(fs,contraseña);
-            getline(fs,auxrol);
-            getline(fs,nombre1);
-            getline(fs,telefono);
-            getline(fs,correo);
-            getline(fs,facultad);
-            if(eligefacultad==facultad && usuario!="director" && usuario!="organizador"){
-                cont++;
-                std::cout<<correo<<std::endl;}
+            fs.open("sesion.txt",std::fstream::in);
+            if(fs.fail()==false){
+                std::cout<<"Email enviados a :"<<std::endl;
+                while(fs.eof()==false){
+                    getline(fs,usuario);
+                    if(usuario!=""){
+                        getline(fs,contraseña);
+                        getline(fs,auxrol);
+                        getline(fs,nombre1);
+                        getline(fs,telefono);
+                        getline(fs,correo);
+                        getline(fs,facultad);
+                        if(eligefacultad==facultad && stoi(auxrol)<3){
+                            cont++;
+                            std::cout<<correo<<std::endl;
+                        }
+                    }
+                }
+                std::cout<<cont<<" email enviados."<<std::endl;
+                break;
+            }
         }
-        std::cout<<cont <<"  email eviados."<<std::endl;
-        break;
-    }
-        }
-        else{std::cout<<"la opcion ha de ser entre 0 y 4"<<std::endl;}
+        else{std::cout<<"El valor introducido no es un valor valido"<<std::endl;}
 
-    } while(opc!=0);
+    }while(opc!=0);
   
 }

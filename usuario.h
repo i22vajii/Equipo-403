@@ -20,6 +20,6 @@
             std::string GetCorreo(){return correo_;}
     };
     
-    void RegistrarUsuario();
+    void RegistrarUsuario(std::vector<std::string> vfac);
 
 #endif

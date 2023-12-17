@@ -103,10 +103,10 @@ void Usuario::VerInscripciones(std::vector<Actividad>vectact, std::string correo
     std::cout<<"Estas inscrito a "<<auxint<<" actividades"<<std::endl;
 }
 
-void RegistrarUsuario(){
+void RegistrarUsuario(std::vector<std::string> vfac){
     std::fstream fs;
     std::string usuario, contraseña, nombre, correo, aux;
-    int telefono;
+    int telefono, opc;
     bool valido=true;
     //Pedimos al usuario que introduzca sus datos
     std::cout<<"Introduzca su usuario (sin espacios):"<<std::endl;
@@ -146,6 +146,16 @@ void RegistrarUsuario(){
         }
         fs.close();
     }while(valido==false);
+    std::cout<<"Elija una facultad:"<<std::endl;
+    for(int i=0; vfac.size()>i; i++){
+        std::cout<<i<<". "<<vfac[i]<<std::endl;
+    }
+    do{
+        std::cin>>opc;
+        if(opc<0 || opc>=vfac.size()){
+            std::cout<<"El valor introducido no es un valor valido, vuelva a introducirlo"<<std::endl;
+        }
+    }while(opc<0 || opc>=vfac.size());
     //Introducimos los datos del usuario en el fichero sesion.txt
     fs.open("sesion.txt",std::fstream::app);
     fs<<usuario<<std::endl;
@@ -154,6 +164,8 @@ void RegistrarUsuario(){
     fs<<nombre<<std::endl;
     fs<<telefono<<std::endl;
     fs<<correo<<std::endl;
+    fs<<vfac[opc]<<std::endl;
     fs.close();
+    system("clear");
     std::cout<<"Usuario registrado"<<std::endl;
 }

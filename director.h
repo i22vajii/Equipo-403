@@ -16,7 +16,7 @@
             void AprobarInscripcion();
             Actividad ActualizarActividad(Actividad a);
             void MostrarInscritos(Actividad a);
-            void EnviarMail();
+            void EnviarMail(std::vector<std::string> vfac);
     };
 
 #endif
