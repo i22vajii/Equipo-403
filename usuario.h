@@ -13,7 +13,7 @@
             std::string correo_;
             std::string facultad_;
         public:
-            void CargarUsuario(std::string nombrecompleto, int telefono, std::string correo, std::string faultudad);
+            void CargarUsuario(std::string nombrecompleto, int telefono, std::string correo, std::string facultad);
             bool PreinscribirUsuario(Actividad a);
             bool CancelarPreinscripcion(Actividad a);
             void VerInscripciones(std::vector<Actividad>vectact,std::string correo);
