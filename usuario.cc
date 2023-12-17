@@ -1,9 +1,10 @@
 #include"usuario.h"
 
-void Usuario::CargarUsuario(std::string nombrecompleto, int telefono, std::string correo){
+void Usuario::CargarUsuario(std::string nombrecompleto, int telefono, std::string correo, std::string facultad){
     nombrecompleto_=nombrecompleto;
     telefono_=telefono;
     correo_=correo;
+    facultad_=facultad;
 }
 
 bool Usuario::PreinscribirUsuario(Actividad a){

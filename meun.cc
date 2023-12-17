@@ -18,7 +18,7 @@ int main(){
         float coste;
         int aforo;
     //Variables login:
-    std::string usuario1, usuario, contraseña1, contraseña, nombre1, correo, auxrol, telefono;
+    std::string usuario1, usuario, contraseña1, contraseña, nombre1, correo, auxrol, telefono,facultad;
     //Switch
     int rol, opc, opcexterior;
     //Auxiliares
@@ -72,6 +72,7 @@ int main(){
                     getline(fs,nombre1);
                     getline(fs,telefono);
                     getline(fs,correo);
+                    getline(fs,facultad);
                     //Comprobamos si el usuario existe pero la contraseña es incorrecta
                     if(usuario1==usuario && contraseña1!=contraseña){
                         auxint=2;
@@ -82,7 +83,7 @@ int main(){
                         auxint=1;
                         switch(rol){
                             case 2:
-                                u.CargarUsuario(nombre1,stoi(telefono),correo);
+                                u.CargarUsuario(nombre1,stoi(telefono),correo,facultad);
                                 break;
                             case 3:
                                 d.CargarDirector(nombre1,stoi(telefono),correo);
@@ -149,6 +150,7 @@ int main(){
                             std::cout<<"2. Aprobar preisncripciones"<<std:: endl;
                             std::cout<<"3. Actualizar Actividad"<<std:: endl;
                             std::cout<<"4. Mostrar Inscritos"<<std:: endl;
+                            std::cout<<"5. Enviar email"<<std::endl;
                             std::cout<<"0. Salir"<<std:: endl;
                             std::cin>>opc;
                             system("clear");
@@ -173,6 +175,9 @@ int main(){
                                     auxint=SeleccionarActividad(vectact);
                                     system("clear");
                                     d.MostrarInscritos(vectact[auxint]);
+                                    break;
+                                case 5:
+                                    d.EnviarMail();
                                     break;
                                 default:
                                     std::cout<<"Opcion incorrecta la opcion debe estar comprendida entre 0 y 4"<<std:: endl;

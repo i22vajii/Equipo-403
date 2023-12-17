@@ -16,6 +16,7 @@
             void AprobarInscripcion();
             Actividad ActualizarActividad(Actividad a);
             void MostrarInscritos(Actividad a);
+            void EnviarMail();
     };
 
 #endif
