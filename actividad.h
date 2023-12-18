@@ -20,7 +20,6 @@
             std::string GetFecha(){return fecha_;}
             float GetCoste(){return coste_;}
             int GetAforo(){return aforo_;}
-            void SetId(std::string id){id_=id;} //Seguramente se pueda eliminar 
             void SetNombre(std::string nombre){nombre_=nombre;}
             void SetDescripcion(std::string descripcion){descripcion_=descripcion;}
             void SetFecha(std::string fecha){fecha_=fecha;}
