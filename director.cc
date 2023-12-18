@@ -93,6 +93,7 @@ Actividad Director::ActualizarActividad(Actividad a){
     }
     //Modificamos la fecha
     std::cout<<"Introduzca 0 si quiere modificar la fecha, introduzca cualquier otro valor para NO modificarlo"<<std::endl;
+    getchar();
     std::cin>>opc;
     if(opc==0){
         do{

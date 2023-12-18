@@ -1,18 +1,6 @@
-CB3
-Pepe
-pepe
-01/12/9845
-21
-21
-CB4
-Ponencia sobre criminologia
-En esta charla va a venir el doctor en criminologia Jack el Destripador a hablarnos un poco sobre sus experiencias
-29/02/2024
+CB1
+Charla sobre ciberseguridad
+En esta charla se van a tratar los principios basicos sobre la ciberseguridad, enfocado principalmente para los usuarios que desconocen por completo esta rama de la informatica
+20/01/2024
+15
 20
-25
-AC2
-Prueba
-amos a probar que se hace bien
-01/12/2025
-56
-2

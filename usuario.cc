@@ -146,7 +146,7 @@ void RegistrarUsuario(std::vector<std::string> vfac){
         }
         fs.close();
     }while(valido==false);
-    std::cout<<"Elija una facultad:"<<std::endl;
+    std::cout<<"Seleccione la facultad a la que pertenece:"<<std::endl;
     for(int i=0; vfac.size()>i; i++){
         std::cout<<i<<". "<<vfac[i]<<std::endl;
     }

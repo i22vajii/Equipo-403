@@ -15,29 +15,40 @@ void VerActividades(std::vector<Actividad> va){
     //Muestra por pantalla todas las actividades
     aux=SeleccionarActividad(va);
     system("clear");
-    //Muestra toda la informacion de la actividad seleccionada
-    std::cout<<"Id: "<<(va[aux].GetId())<<std::endl<<
-    "Nombre: "<<(va[aux].GetNombre())<<std::endl<<
-    "Descripcion: "<<(va[aux].GetDescripcion())<<std::endl<<
-    "Fecha: "<<(va[aux].GetFecha())<<std::endl<<
-    "Coste: "<<(va[aux].GetCoste())<<std::endl<<
-    "Aforo: "<<(va[aux].GetAforo())<<std::endl;
+    //Comprobamos que haya alguna actividad creada
+    if(aux==-1){
+        std::cout<<"No hay ninguna actividad creada"<<std::endl;
+    }
+    else{
+        //Muestra toda la informacion de la actividad seleccionada
+        std::cout<<"Id: "<<(va[aux].GetId())<<std::endl<<
+        "Nombre: "<<(va[aux].GetNombre())<<std::endl<<
+        "Descripcion: "<<(va[aux].GetDescripcion())<<std::endl<<
+        "Fecha: "<<(va[aux].GetFecha())<<std::endl<<
+        "Coste: "<<(va[aux].GetCoste())<<std::endl<<
+        "Aforo: "<<(va[aux].GetAforo())<<std::endl;
+    }
 }
 
 int SeleccionarActividad(std::vector<Actividad> vectact){
     int auxint;
-    for(int i=0;vectact.size()>i;i++){
-        std::cout<<i<<". "<<(vectact[i].GetNombre())<<std::endl;
-    }
-    //Selecciona una actividad
-    do{
-        std::cin>>auxint;
-        //Comprueba que la actividad seleccionada es valida
-        if(auxint<0 || auxint>=vectact.size()){
-            std::cout<<"El numero introducido no es un numero valido, vuelva a introducirlo"<<std::endl;
+    if(vectact.size()!=0){
+        for(int i=0;vectact.size()>i;i++){
+            std::cout<<i<<". "<<(vectact[i].GetNombre())<<std::endl;
         }
-    }while(auxint<0 || auxint>=vectact.size());
-    return auxint;
+        //Selecciona una actividad
+        do{
+            std::cin>>auxint;
+            //Comprueba que la actividad seleccionada es valida
+            if(auxint<0 || auxint>=vectact.size()){
+                std::cout<<"El numero introducido no es un numero valido, vuelva a introducirlo"<<std::endl;
+            }
+        }while(auxint<0 || auxint>=vectact.size());
+        return auxint;
+    }
+    else{
+        return -1;
+    }
 }
 
 bool ComprobarFecha(std::string fecha){

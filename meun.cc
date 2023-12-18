@@ -30,19 +30,22 @@ int main(){
     int auxint=0;
     //Volcado de fichero a vector
     fs.open("Actividades.txt",std::fstream::in);
-    while(fs.eof()==false){
-        getline(fs,id);
-        getline(fs,nombre);
-        getline(fs,descripcion);
-        getline(fs,fecha);
-        getline(fs,aux);
-        coste=stof(aux);
-        getline(fs,aux);
-        aforo=stoi(aux);
-        Actividad aux(id,nombre,descripcion,fecha,coste,aforo);
-        //Comprobamos que las actividades aun no se han realizado
-        if(ComprobarFecha(fecha)==true){
-            vectact.push_back(aux);
+    //Comprobamos que el fichero existe
+    if(fs.fail()==false){
+        while(fs.eof()==false){
+            getline(fs,id);
+            getline(fs,nombre);
+            getline(fs,descripcion);
+            getline(fs,fecha);
+            getline(fs,aux);
+            coste=stof(aux);
+            getline(fs,aux);
+            aforo=stoi(aux);
+            Actividad aux(id,nombre,descripcion,fecha,coste,aforo);
+            //Comprobamos que las actividades aun no se han realizado
+            if(ComprobarFecha(fecha)==true){
+                vectact.push_back(aux);
+            }
         }
     }
     fs.close();
@@ -130,13 +133,25 @@ int main(){
                                     std::cout<<"Seleccione una actividad:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
                                     system("clear");
-                                    u.PreinscribirUsuario(vectact[auxint]);
+                                    //Comprobamos que haya alguna actividad creada
+                                    if(auxint!=-1){
+                                        u.PreinscribirUsuario(vectact[auxint]);
+                                    }
+                                    else{
+                                        std::cout<<"No hay ninguna actividad creada"<<std::endl;
+                                    }
                                     break;
                                 case 3:
                                     std::cout<<"Seleccione la actividad de la que desea cancelar la preinscripcion"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
                                     system("clear");
-                                    u.CancelarPreinscripcion(vectact[auxint]);
+                                    //Comprobamos que haya alguna actividad creada
+                                    if(auxint!=-1){
+                                        u.CancelarPreinscripcion(vectact[auxint]);
+                                    }
+                                    else{
+                                        std::cout<<"No hay ninguna actividad creada"<<std::endl;
+                                    }
                                     break;
                                 case 4:
                                     u.VerInscripciones(vectact,u.GetCorreo());
@@ -173,13 +188,25 @@ int main(){
                                     std::cout<<"Seleccione la actividad que desea actualizar:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
                                     system("clear");
-                                    vectact[auxint]=d.ActualizarActividad(vectact[auxint]);
+                                    //Comprobamos que haya alguna actividad creada
+                                    if(auxint!=-1){
+                                        vectact[auxint]=d.ActualizarActividad(vectact[auxint]);
+                                    }
+                                    else{
+                                        std::cout<<"No hay ninguna actividad creada"<<std::endl;
+                                    }
                                     break;
                                 case 4:
                                     std::cout<<"Seleccione la actividad de la que quiere ver los usuarios inscritos:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
                                     system("clear");
-                                    d.MostrarInscritos(vectact[auxint]);
+                                    //Comprobamos que haya alguna actividad creada
+                                    if(auxint!=-1){
+                                        d.MostrarInscritos(vectact[auxint]);
+                                    }
+                                    else{
+                                        std::cout<<"No hay ninguna actividad creada"<<std::endl;
+                                    }
                                     break;
                                 case 5:
                                     d.EnviarMail(vfac);
@@ -217,13 +244,25 @@ int main(){
                                     std::cout<<"Seleccione la actividad que desea actualizar:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
                                     system("clear");
-                                    vectact[auxint]=o.ActualizarActividad(vectact[auxint]);
+                                    //Comprobamos que haya alguna actividad creada
+                                    if(auxint!=-1){
+                                        vectact[auxint]=o.ActualizarActividad(vectact[auxint]);
+                                    }
+                                    else{
+                                        std::cout<<"No hay ninguna actividad creada"<<std::endl;
+                                    }
                                     break;
                                 case 4:
                                     std::cout<<"Seleccione la actividad de la que quiere ver los usuarios inscritos:"<<std::endl;
                                     auxint=SeleccionarActividad(vectact);
                                     system("clear");
-                                    o.MostrarInscritos(vectact[auxint]);
+                                    //Comprobamos que haya alguna actividad creada
+                                    if(auxint!=-1){
+                                        o.MostrarInscritos(vectact[auxint]);
+                                    }
+                                    else{
+                                        std::cout<<"No hay ninguna actividad creada"<<std::endl;
+                                    }
                                     break;
                                 case 5:
                                     o.EnviarMail(vfac);
@@ -248,18 +287,21 @@ int main(){
         }                   
     }while(opcexterior!=0);
     //Volcado de vector a fichero
-    fs.open("Actividades.txt",std::fstream::out);
-    for(int i=0;vectact.size()>i;i++){
-        fs<<(vectact[i].GetId())<<std::endl;
-        fs<<(vectact[i].GetNombre())<<std::endl;
-        fs<<(vectact[i].GetDescripcion())<<std::endl;
-        fs<<(vectact[i].GetFecha())<<std::endl;
-        fs<<(vectact[i].GetCoste())<<std::endl;
-        fs<<(vectact[i].GetAforo());
-        //Para que no duplique la ultimna actividad
-        if(vectact.size()>(i+1)){
-            fs<<std::endl;
+    //Comprobamos si hay alguna actividad en el vector
+    if(vectact.size()!=0){
+        fs.open("Actividades.txt",std::fstream::out);
+        for(int i=0;vectact.size()>i;i++){
+            fs<<(vectact[i].GetId())<<std::endl;
+            fs<<(vectact[i].GetNombre())<<std::endl;
+            fs<<(vectact[i].GetDescripcion())<<std::endl;
+            fs<<(vectact[i].GetFecha())<<std::endl;
+            fs<<(vectact[i].GetCoste())<<std::endl;
+            fs<<(vectact[i].GetAforo());
+            //Para que no duplique la ultimna actividad
+            if(vectact.size()>(i+1)){
+                fs<<std::endl;
+            }
         }
+        fs.close();
     }
-    fs.close();
 }
