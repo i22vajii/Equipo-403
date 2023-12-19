@@ -1,4 +1,6 @@
 #include<iostream>
+#include<thread>
+#include<chrono>
 #include<fstream>
 #include<vector>
 #include<string>
@@ -28,6 +30,12 @@ int main(){
     int rol, opc, opcexterior;
     //Auxiliares
     int auxint=0;
+    //Mensale de bienvenida
+    std::cout<<"|---------------------------------------------|"<<std::endl<<
+    "|        BIENVENIDOS A NUESTRO SISTEMA        |"<<std::endl<<
+    "|---------------------------------------------|"<<std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+    system("clear");
     //Volcado de fichero a vector
     fs.open("Actividades.txt",std::fstream::in);
     //Comprobamos que el fichero existe
