@@ -25,7 +25,7 @@ int main(){
     //Variables login:
     std::string usuario1, usuario, contraseña1, contraseña, nombre1, correo, auxrol, telefono,facultad;
     //Switch
-    int rol, opc, opcexterior;
+    int rol=0, opc, opcexterior;
     //Auxiliares
     int auxint=0;
     //Volcado de fichero a vector
