@@ -1,0 +1,35 @@
+organizador
+9123
+4
+Luis
+654123078
+i22luis@uco.es
+EPSC
+director
+5678
+3
+Ismael Valenzuela Jimenez
+963214587
+i22vajii@uco.es
+EPSC
+director2
+9632
+3
+Manuel Peinado Cuenca
+963214587
+i22pecum@uco.es
+EPSC
+director3
+1478
+3
+Jose Trujillo Medina
+963214587
+i22trmej@uco.es
+EPSC
+usuario
+1234
+2
+pedro perez
+65893245
+alocleaocora
+Facultad de ciencias
