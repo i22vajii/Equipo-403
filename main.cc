@@ -218,7 +218,18 @@ int main(){
                                     }
                                     break;
                                 case 5:
-                                    d.EnviarMail(vfac);
+                                    std::cout<<"Elija una facultad:"<<std::endl;
+                                    for(int i=0; vfac.size()>i; i++){
+                                        std::cout<<i<<". "<<vfac[i]<<std::endl;
+                                    }
+                                    do{
+                                        std::cin>>auxint;
+                                        if(auxint<0 || auxint>=vfac.size()){
+                                            std::cout<<"El valor introducido no es un valor valido, vuelva a elegir una facultad"<<std::endl;
+                                        }
+                                    }while(auxint<0 || auxint>=vfac.size());
+                                    system("clear");
+                                    d.EnviarMail(vfac[auxint]);
                                     break;
                                 default:
                                     std::cout<<"El valor introducido no es un valor valido"<<std:: endl;
@@ -274,7 +285,19 @@ int main(){
                                     }
                                     break;
                                 case 5:
-                                    o.EnviarMail(vfac);
+                                    std::cout<<"Elija una facultad:"<<std::endl;
+                                    for(int i=0; vfac.size()>i; i++){
+                                        std::cout<<i<<". "<<vfac[i]<<std::endl;
+                                    }
+                                    //Seleccionamos la facultad
+                                    do{
+                                        std::cin>>auxint;
+                                        if(auxint<0 || auxint>=vfac.size()){
+                                            std::cout<<"El valor introducido no es un valor valido, vuelva a elegir una facultad"<<std::endl;
+                                        }
+                                    }while(auxint<0 || auxint>=vfac.size());
+                                    system("clear");
+                                    o.EnviarMail(vfac[auxint]);
                                     break;
                                 case 6:
                                     vectact.push_back(o.CrearActividad(vectact));

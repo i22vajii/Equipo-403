@@ -15,8 +15,8 @@
             void CargarDirector(std::string nombrecompleto, int telefono, std::string correo);
             void AprobarInscripcion();
             Actividad ActualizarActividad(Actividad a);
-            void MostrarInscritos(Actividad a);
-            void EnviarMail(std::vector<std::string> vfac);
+            bool MostrarInscritos(Actividad a);
+            bool EnviarMail(std::string fac);
     };
 
 #endif

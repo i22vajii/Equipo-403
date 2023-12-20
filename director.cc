@@ -153,14 +153,14 @@ Actividad Director::ActualizarActividad(Actividad a){
     return a;
 }
 
-void Director::MostrarInscritos(Actividad a){
+bool Director::MostrarInscritos(Actividad a){
     std::fstream fs;
     std::string usu;
     int cont=0;
     //Recorremos todo el fichero de la actividad
     fs.open(a.GetId()+".txt",std::fstream::in);
+    //Comprobamos si el fichero existe
     if(fs.fail()==false){
-        std::cout<<"Los usuarios inscritos son:"<<std::endl;
         while(fs.eof()==false){
             //Comprobamos si hemos superado el aforo
             if(cont==a.GetAforo()){
@@ -169,58 +169,55 @@ void Director::MostrarInscritos(Actividad a){
             //Mostramos el correo de los usuarios inscritos o en lista de espera
             getline(fs,usu);
             if(usu!=""){
+                if(cont==0){
+                    std::cout<<"Los usuarios inscritos son:"<<std::endl;
+                }
                 std::cout<<usu<<std::endl;
                 cont++;
             }
         }
     }
-    //Comprobamos si el fichero existe
-    else{
-        std::cout<<"0 personas inscritas en esta actividad"<<std::endl;
-    }
     fs.close();
+    if(cont==0){
+        std::cout<<"No hay nadie inscrito en esta actividad"<<std::endl;
+        return false;
+    }
+    return true;
 }
 
-void Director::EnviarMail(std::vector<std::string> vfac){
+bool Director::EnviarMail(std::string fac){
     std::fstream fs;
-    std::string eligefacultad;
     std::string usuario, contraseña, nombre1, correo, auxrol, telefono,facultad;
     int cont=0;
-    int opc=0;
-    do{
-        std::cout<<"Elija una facultad:"<<std::endl;
-        std::cout<<"0. Salir"<<std::endl;
-        for(int i=0; vfac.size()>i; i++){
-            std::cout<<(i+1)<<". "<<vfac[i]<<std::endl;
-        }
-        std::cin>>opc;
-        system("clear");
-        if(opc>0 && opc<=vfac.size()){
-            eligefacultad=vfac[opc-1];
-            fs.open("sesion.txt",std::fstream::in);
-            if(fs.fail()==false){
-                std::cout<<"Email enviados a :"<<std::endl;
-                while(fs.eof()==false){
-                    getline(fs,usuario);
-                    if(usuario!=""){
-                        getline(fs,contraseña);
-                        getline(fs,auxrol);
-                        getline(fs,nombre1);
-                        getline(fs,telefono);
-                        getline(fs,correo);
-                        getline(fs,facultad);
-                        if(eligefacultad==facultad && stoi(auxrol)<3){
-                            cont++;
-                            std::cout<<correo<<std::endl;
-                        }
+    //Abrimos el fichero de los usuarios
+    fs.open("sesion.txt",std::fstream::in);
+    if(fs.fail()==false){
+        while(fs.eof()==false){
+            getline(fs,usuario);
+            if(usuario!=""){
+                getline(fs,contraseña);
+                getline(fs,auxrol);
+                getline(fs,nombre1);
+                getline(fs,telefono);
+                getline(fs,correo);
+                getline(fs,facultad);
+                //Enviamos el correo a los usuarios que pertenezcan a la facultad
+                if(fac==facultad && stoi(auxrol)<3){
+                    if(cont==0){
+                        std::cout<<"Email enviados a :"<<std::endl;
                     }
+                    cont++;
+                    std::cout<<correo<<std::endl;
                 }
-                std::cout<<cont<<" email enviados."<<std::endl;
-                break;
             }
         }
-        else{std::cout<<"El valor introducido no es un valor valido"<<std::endl;}
-
-    }while(opc!=0);
-  
+        //Comprobamos el numero de emails enviados
+        std::cout<<cont<<" email enviados."<<std::endl;
+    }
+    if(cont>0){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
